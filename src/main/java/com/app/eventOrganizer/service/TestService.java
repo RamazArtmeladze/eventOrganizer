@@ -5,6 +5,8 @@ import com.app.eventOrganizer.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class TestService {
@@ -16,5 +18,8 @@ public class TestService {
         TestModel testModel = new TestModel(ID, name);
         testRepository.save(testModel);
         return testModel;
+    }
+    public List<TestModel> getTheInfo() {
+       return testRepository.findAll();
     }
 }
