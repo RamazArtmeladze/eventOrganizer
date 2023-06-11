@@ -31,7 +31,7 @@ The project uses database migrations managed by Flyway. you can instal and get m
 
 -- Open the project in your preferred IDE (IntelliJ IDEA is recommended).
 -- Build the project to resolve any dependencies.
--- Run the main class src/main/java/com.example.eventorganizer/EventOrganizerApplication.java to start the application.
+-- Run the main class src/main/java/com.app.eventOrganizer/EventOrganizerApplication.java to start the application.
 -- Once the application is running, you can access it by visiting http://localhost:8080 in your web browser or using a tool like Postman.
 -- You can try the available endpoints, such as /health, to verify that the application is running and connected to the database.
 
