@@ -10,22 +10,22 @@ Before running the project, ensure you have the following software installed on 
 
 Getting Started
 
-1. Clone the repository
-2. Set up the database
+1. Clone the repository.
+2. Set up the database.
 -- Install PostgreSQL database on your machine if you haven't already.
 Create a new database for the project. You can use the following command in the PostgreSQL terminal or a tool like pgAdmin:
 "CREATE DATABASE event_organizer"
 
 -- Update the database configuration in the project:
 Open the src/main/resources/application.properties file. Modify the following lines to match your PostgreSQL configuration:
-spring.datasource.url=jdbc:postgresql://localhost:5432/event_organizer
-spring.datasource.username=your_username
-spring.datasource.password=your_password
+spring.datasource.url=jdbc:postgresql://localhost:5432/eventOrganizer.
+spring.datasource.username=your_username.
+spring.datasource.password=your_password.
 
 Replace your_username and your_password with your PostgreSQL credentials.
 
 3. Database Migrations:
-The project uses database migrations managed by Flyway. you can instal and get more information from the following link: https://flywaydb.org/documentation/getstarted/why 
+The project uses database migrations managed by Flyway. you can instal and get more information about it from the following link: https://flywaydb.org/documentation/getstarted/why 
 
 4. Running the Application:
 
