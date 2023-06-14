@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<module name="Checker">
+    <module name="TreeWalker">
+        <!-- Coding Style -->
+        <module name="Indentation">
+            <property name="basicOffset" value="4"/>
+            <property name="braceAdjustment" value="0"/>
+            <property name="caseIndent" value="4"/>
+            <property name="throwsIndent" value="4"/>
+            <property name="arrayInitIndent" value="4"/>
+        </module>
+        <module name="EmptyLineSeparator">
+            <property name="allowNoEmptyLineBetweenFields" value="true"/>
+            <property name="allowNoEmptyLineBetweenMethods" value="true"/>
+        </module>
+        <module name="MethodParamPad"/>
+        <module name="ParameterName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="WhitespaceAfter">
+            <property name="tokens" value="ASSIGN, LCURLY, RCURLY, SEMI, LPAREN, RPAREN, METHOD_REF, LITERAL_ASSERT"/>
+        </module>
+        <module name="JavadocStyle"/>
+
+        <!-- Naming Conventions -->
+        <module name="PackageName">
+            <property name="format" value="^[a-z]+(\.[a-z][a-zA-Z0-9]*)*$"/>
+            <property name="allowPattern" value="^com\.example\..*"/>
+        </module>
+        <module name="TypeName">
+            <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="MemberName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="LocalVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="ParameterName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+
+        <!-- Import Order -->
+        <module name="ImportOrder">
+            <property name="specialImportsRegExp" value="javax?, org?[.]junit.*"/>
+            <property name="sortImportsInGroupAlphabetically" value="true"/>
+            <property name="separateLineBetweenGroups" value="true"/>
+            <property name="sortImportsInGroup" value="true"/>
+            <property name="grouped" value="true"/>
+        </module>
+
+        <!-- Other -->
+        <module name="AvoidStarImport"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="NoTabCharacter"/>
+        <module name="NewlineAtEndOfFile"/>
+    </module>
+</module>
