@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -16,7 +18,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/users")
-    public ResponseEntity<UserModel> createUserModel(@RequestBody UserRegistrationDto userDto) {
+    public ResponseEntity<UserModel> createUserModel(@Valid  @RequestBody UserRegistrationDto userDto) {
         UserModel userModel = userService.registerUser(userDto);
         return new ResponseEntity<>(userModel, HttpStatus.CREATED);
     }

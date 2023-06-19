@@ -20,17 +20,7 @@ public class UserService {
     }
 
     public UserModel registerUser(UserRegistrationDto userDto) {
-        if (!isValidEmail(userDto.getEmail())) {
-            throw new IllegalArgumentException("Invalid email address.");
-        }
-        if (!userDto.getPassword().equals(userDto.getPasswordConfirmation())) {
-            throw new IllegalArgumentException("Password confirmation does not match.");
-        }
-        if (userDto.getPassword().length() < 8 || !userDto.getPassword().matches(".*[a-zA-Z].*")
-                || !userDto.getPassword().matches(".*\\d.*")) {
-            throw new IllegalArgumentException(
-                    "Password must be at least 8 characters long and contain letters and numbers.");
-        }
+
 
         String encodedPassword = passwordEncoder.encode(userDto.getPassword());
         String encodedPasswordConfirmation = passwordEncoder.encode(userDto.getPasswordConfirmation());
