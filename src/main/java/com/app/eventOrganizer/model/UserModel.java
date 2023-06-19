@@ -26,4 +26,13 @@ public class UserModel {
     String password;
     String passwordConfirmation;
 
+
+    public UserModel(String email, String firstName, String lastName, String userRole, String password, String passwordConfirmation) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userRole = userRole;
+        this.password = password;
+        this.passwordConfirmation = passwordConfirmation;
+    }
 }
