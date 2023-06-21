@@ -1,12 +1,9 @@
 package com.app.eventOrganizer.Dto;
 
 import com.app.eventOrganizer.validation.PasswordConfirmationMatch;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import javax.validation.constraints.Email;
+import lombok.*;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -16,7 +13,8 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @PasswordConfirmationMatch
-public class UserRegistrationDto {
+@Builder
+public class UserModelDto {
         @NotBlank(message = "Please enter email")
         @Email(message = "Invalid email address")
         private String email;
@@ -34,6 +32,5 @@ public class UserRegistrationDto {
         private String password;
         @NotBlank(message = "Password confirmation is required")
         private String passwordConfirmation;
-
 }
 

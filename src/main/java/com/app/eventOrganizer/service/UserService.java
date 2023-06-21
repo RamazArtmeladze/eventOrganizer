@@ -1,38 +1,22 @@
 package com.app.eventOrganizer.service;
 
-import com.app.eventOrganizer.Dto.UserRegistrationDto;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import com.app.eventOrganizer.Dto.UserModelDto;
+import com.app.eventOrganizer.mapper.UserModelMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.app.eventOrganizer.model.UserModel;
 import com.app.eventOrganizer.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-    public UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final UserModelMapper mapper;
 
-    @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    public UserModelDto registerUser(UserModelDto userDto) {
 
-    public UserModel registerUser(UserRegistrationDto userDto) {
+        UserModel userModel = mapper.toEntity(userDto);
 
-
-        String encodedPassword = passwordEncoder.encode(userDto.getPassword());
-        String encodedPasswordConfirmation = passwordEncoder.encode(userDto.getPasswordConfirmation());
-
-        UserModel userModel = new UserModel (userDto.getEmail(), userDto.getFirstName(), userDto.getLastName(),
-                                            userDto.getUserRole(), encodedPassword, encodedPasswordConfirmation);
-        userRepository.save(userModel);
-        return userModel;
-    }
-
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        return email.matches(emailRegex);
+        return mapper.toDto(userRepository.save(userModel));
     }
 }
