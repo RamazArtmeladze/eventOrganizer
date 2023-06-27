@@ -10,16 +10,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class TestController {
+public class HealthController {
 
     private final TestService testService;
 
-//    @PostMapping("/test")
-//    public TestModel createTestModel ( @RequestParam Long ID, @RequestParam String name) {
-//        return testService.saveToDB(ID, name);
-//    }
     @GetMapping("/health")
-    public List<TestModel> getAllTestUsers ( ) {
-        return  testService.getTheInfo();
+    public List<TestModel> getAllTestUsers() {
+        return testService.getInfo();
     }
 }
