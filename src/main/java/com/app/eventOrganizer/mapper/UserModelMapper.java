@@ -2,6 +2,7 @@ package com.app.eventOrganizer.mapper;
 
 
 import com.app.eventOrganizer.Dto.UserModelDto;
+import com.app.eventOrganizer.Dto.UserRegistrationDto;
 import com.app.eventOrganizer.model.UserModel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -21,22 +22,16 @@ public class UserModelMapper {
                 .email(userModel.getEmail())
                 .firstName(userModel.getFirstName())
                 .lastName(userModel.getLastName())
-                .userRole(userModel.getUserRole())
-                .password(userModel.getPassword())
-                .passwordConfirmation(userModel.getPasswordConfirmation())
                 .build();
     }
-    public  UserModel toEntity (UserModelDto userModelDto) {
-        String encodedPassword = passwordEncoder.encode(userModelDto.getPassword());
-        String encodedPasswordConfirmation = passwordEncoder.encode(userModelDto.getPasswordConfirmation());
+    public  UserModel toEntity (UserRegistrationDto userRegistrationDto) {
+        String encodedPassword = passwordEncoder.encode(userRegistrationDto.getPassword());
 
         return UserModel.builder()
-                .email(userModelDto.getEmail())
-                .firstName(userModelDto.getFirstName())
-                .lastName(userModelDto.getLastName())
-                .userRole(userModelDto.getUserRole())
+                .email(userRegistrationDto.getEmail())
+                .firstName(userRegistrationDto.getFirstName())
+                .lastName(userRegistrationDto.getLastName())
                 .password(encodedPassword)
-                .passwordConfirmation(encodedPasswordConfirmation)
                 .build();
     }
 }

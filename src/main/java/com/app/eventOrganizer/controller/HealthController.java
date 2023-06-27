@@ -10,12 +10,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class TestController {
+public class HealthController {
 
     private final TestService testService;
 
     @GetMapping("/health")
     public List<TestModel> getAllTestUsers() {
-        return testService.getTheInfo();
+        return testService.getInfo();
     }
 }

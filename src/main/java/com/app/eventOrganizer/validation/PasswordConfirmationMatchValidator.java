@@ -1,17 +1,18 @@
 package com.app.eventOrganizer.validation;
 
 import com.app.eventOrganizer.Dto.UserModelDto;
+import com.app.eventOrganizer.Dto.UserRegistrationDto;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PasswordConfirmationMatchValidator implements ConstraintValidator<PasswordConfirmationMatch, UserModelDto> {
+public class PasswordConfirmationMatchValidator implements ConstraintValidator<PasswordConfirmationMatch, UserRegistrationDto> {
 
     @Override
-    public boolean isValid(UserModelDto userDto, ConstraintValidatorContext context) {
-        if (userDto == null) {
+    public boolean isValid(UserRegistrationDto userRegistrationDto, ConstraintValidatorContext context) {
+        if (userRegistrationDto == null) {
             return true;
         }
-        return userDto.getPassword().equals(userDto.getPasswordConfirmation());
+        return userRegistrationDto.getPassword().equals(userRegistrationDto.getPasswordConfirmation());
     }
 }

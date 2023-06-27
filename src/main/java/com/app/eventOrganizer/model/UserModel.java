@@ -15,20 +15,9 @@ import javax.persistence.Id;
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long ID;
-    String email;
-    String firstName;
-    String lastName;
-    String userRole;
-    String password;
-    String passwordConfirmation;
-
-    public UserModel(String email, String firstName, String lastName, String userRole, String password, String passwordConfirmation) {
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userRole = userRole;
-        this.password = password;
-        this.passwordConfirmation = passwordConfirmation;
-    }
+    private Long ID;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String password;
 }

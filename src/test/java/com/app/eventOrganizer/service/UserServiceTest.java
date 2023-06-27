@@ -1,7 +1,9 @@
 package com.app.eventOrganizer.service;
 
 import com.app.eventOrganizer.Dto.UserModelDto;
+import com.app.eventOrganizer.Dto.UserRegistrationDto;
 import com.app.eventOrganizer.mapper.UserModelMapper;
+import com.app.eventOrganizer.model.UserModel;
 import com.app.eventOrganizer.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,23 +30,33 @@ class UserServiceTest {
     }
     @Test
     void registerUser() {
-        UserModelDto expectedUser = UserModelDto.builder()
-                .email("userd@das.com")
-                .firstName("user")
-                .lastName("name")
-                .userRole("user")
-                .password("paroli123")
-                .passwordConfirmation("paroli123")
+        UserRegistrationDto registrationDto = UserRegistrationDto.builder()
+                .email("user1@example.com")
+                .firstName("John")
+                .lastName("Doe")
+                .password("password1")
+                .passwordConfirmation("password1")
+                .build();
+
+        UserModel userModel = UserModel.builder()
+                .email(registrationDto.getEmail())
+                .firstName(registrationDto.getFirstName())
+                .lastName(registrationDto.getLastName())
+                .password(registrationDto.getPassword())
+                .build();
+
+        UserModelDto expectedUserDto = UserModelDto.builder()
+                .email(userModel.getEmail())
+                .firstName(userModel.getFirstName())
+                .lastName(userModel.getLastName())
                 .build();
 
         Mockito.when(userRepository.save(any())).thenAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
 
-        UserModelDto actualUser = userService.registerUser(expectedUser);
+        UserModelDto actualUserDto = userService.registerUser(registrationDto);
 
-        Assertions.assertEquals(actualUser.getFirstName(), expectedUser.getFirstName());
-        Assertions.assertEquals(actualUser.getLastName(), expectedUser.getLastName());
-        Assertions.assertEquals(actualUser.getUserRole(), expectedUser.getUserRole());
-        Assertions.assertEquals(actualUser.getEmail(), expectedUser.getEmail());
-
+        Assertions.assertEquals(expectedUserDto.getEmail(), actualUserDto.getEmail());
+        Assertions.assertEquals(expectedUserDto.getFirstName(), actualUserDto.getFirstName());
+        Assertions.assertEquals(expectedUserDto.getLastName(), actualUserDto.getLastName());
     }
 }

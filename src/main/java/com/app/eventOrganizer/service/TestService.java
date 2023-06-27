@@ -20,7 +20,7 @@ public class TestService {
         return testModel;
     }
 
-    public List<TestModel> getTheInfo() {
+    public List<TestModel> getInfo() {
         return testRepository.findAll();
     }
 }

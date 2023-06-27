@@ -1,6 +1,7 @@
 package com.app.eventOrganizer.service;
 
 import com.app.eventOrganizer.Dto.UserModelDto;
+import com.app.eventOrganizer.Dto.UserRegistrationDto;
 import com.app.eventOrganizer.mapper.UserModelMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,10 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserModelMapper mapper;
 
-    public UserModelDto registerUser(UserModelDto userDto) {
+    public UserModelDto registerUser(UserRegistrationDto userRegistrationDto) {
 
-        UserModel userModel = mapper.toEntity(userDto);
+        UserModel userModel = mapper.toEntity(userRegistrationDto);
+        UserModel savedUserModel = userRepository.save(userModel);
 
         return mapper.toDto(userRepository.save(userModel));
     }
