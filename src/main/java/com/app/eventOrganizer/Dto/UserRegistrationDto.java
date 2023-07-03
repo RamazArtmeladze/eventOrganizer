@@ -1,5 +1,6 @@
 package com.app.eventOrganizer.Dto;
 
+import com.app.eventOrganizer.validation.PasswordConfirmationMatch;
 import lombok.*;
 
 import javax.validation.constraints.Email;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder
+@PasswordConfirmationMatch
 public class UserRegistrationDto {
     @NotBlank(message = "Please enter email")
     @Email(message = "Invalid email address")

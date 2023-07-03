@@ -1,16 +1,20 @@
 package com.app.eventOrganizer.controller;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 public class HomeController {
 
-    @GetMapping("/")
-    public String home() {
+    @GetMapping("/home")
+    public String home(Authentication authentication) {
 
-        return "home";
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "home";
+
+        } else {
+            return null;
+        }
     }
 }

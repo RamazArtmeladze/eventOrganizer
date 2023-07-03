@@ -1,33 +1,43 @@
 package com.app.eventOrganizer.controller;
 
-import com.app.eventOrganizer.service.UserService;
+import com.app.eventOrganizer.Dto.LoginUserModelDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+
 
 @RestController
 @RequiredArgsConstructor
 public class LoginController {
-
-    @Autowired
-    private UserService userService;
-
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "login";
-    }
+    private final UserDetailsService userDetailsService;
+    private final AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public String processLogin(@RequestParam("email") String email, @RequestParam("password") String password) {
-        if (userService.isValidUser(email, password)) {
+    public String login( @RequestBody LoginUserModelDto loginForm, HttpSession session) {
+        try {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(loginForm.getEmail());
 
-            return "successfully";
-        } else {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginForm.getEmail(), loginForm.getPassword())
+            );
 
-            return "error";
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            session.setAttribute("userDetails", userDetails);
+
+            return "Login successful!";
+
+        } catch (AuthenticationException e) {
+
+            return "failed";
         }
     }
 }

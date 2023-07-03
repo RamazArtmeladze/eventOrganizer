@@ -1,6 +1,5 @@
 package com.app.eventOrganizer.Dto;
 
-import com.app.eventOrganizer.validation.PasswordConfirmationMatch;
 import lombok.*;
 
 import javax.validation.constraints.Email;
@@ -10,7 +9,6 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-@PasswordConfirmationMatch
 @Builder
 public class UserModelDto {
         private Long id;
