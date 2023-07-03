@@ -28,7 +28,7 @@ public class UserService  implements UserDetailsService {
         return mapper.toDto(userRepository.save(userModel));
     }
 
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException { // (1)
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserModel userModel = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
 

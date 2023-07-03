@@ -1,20 +1,16 @@
 package com.app.eventOrganizer.controller;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 @RestController
 public class HomeController {
 
     @GetMapping("/home")
-    public String home(Authentication authentication) {
+    @PreAuthorize("isAuthenticated()")
+    public String home() {
 
-        if (authentication != null && authentication.isAuthenticated()) {
-            return "home";
-
-        } else {
-            return null;
-        }
+        return "home";
     }
 }
