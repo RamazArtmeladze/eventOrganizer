@@ -8,7 +8,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 public class HomeController {
 
     @GetMapping("/home")
-    @PreAuthorize("isAuthenticated()")
     public String home() {
 
         return "home";

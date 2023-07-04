@@ -21,7 +21,7 @@ public class LoginController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public String login( @RequestBody LoginUserModelDto loginForm, HttpSession session) {
+    public String login(@RequestBody LoginUserModelDto loginForm, HttpSession session) {
         try {
             UserDetails userDetails = userDetailsService.loadUserByUsername(loginForm.getEmail());
 
