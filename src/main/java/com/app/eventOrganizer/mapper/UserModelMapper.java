@@ -18,7 +18,9 @@ public class UserModelMapper {
     private PasswordEncoder passwordEncoder ;
 
     public UserModelDto toDto (UserModel userModel) {
+
         return UserModelDto.builder()
+                .id(userModel.getID())
                 .email(userModel.getEmail())
                 .firstName(userModel.getFirstName())
                 .lastName(userModel.getLastName())
