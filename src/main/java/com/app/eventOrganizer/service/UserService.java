@@ -25,7 +25,7 @@ public class UserService  implements UserDetailsService {
         UserModel userModel = mapper.toEntity(userRegistrationDto);
         UserModel savedUserModel = userRepository.save(userModel);
 
-        return mapper.toDto(userRepository.save(userModel));
+        return mapper.toDto(savedUserModel);
     }
 
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

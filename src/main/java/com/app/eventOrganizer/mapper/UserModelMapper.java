@@ -20,7 +20,7 @@ public class UserModelMapper {
     public UserModelDto toDto (UserModel userModel) {
 
         return UserModelDto.builder()
-                .id(userModel.getID())
+                .id(userModel.getUserId())
                 .email(userModel.getEmail())
                 .firstName(userModel.getFirstName())
                 .lastName(userModel.getLastName())
