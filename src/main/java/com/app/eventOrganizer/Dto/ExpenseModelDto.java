@@ -7,7 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder
-public class ExpensesRegistrationDto {
-    private Double amount;
+public class ExpenseModelDto {
+    private Long id;
     private String description;
+    private Double amount;
 }

@@ -17,5 +17,5 @@ public class EventRegistrationDto {
     private String location;
     private String description;
     private BigDecimal estimateBudget;
-    private ExpensesRegistrationDto expenses;
+    private ExpenseRegistrationDto expenses;
 }

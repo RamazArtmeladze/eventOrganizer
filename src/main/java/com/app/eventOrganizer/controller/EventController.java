@@ -1,14 +1,13 @@
 package com.app.eventOrganizer.controller;
 
-import com.app.eventOrganizer.Dto.EventModelDto;
-import com.app.eventOrganizer.Dto.EventRegistrationDto;
-import com.app.eventOrganizer.Dto.ExpensesRegistrationDto;
+import com.app.eventOrganizer.Dto.*;
 import com.app.eventOrganizer.service.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,9 +22,9 @@ public class EventController {
     }
 
     @PostMapping("events/{eventId}/expenses")
-    public ResponseEntity<EventModelDto> addExpense(@PathVariable Long eventId, @RequestBody ExpensesRegistrationDto expensesRegistrationDto) {
-        EventModelDto eventModelDto = eventService.addExpense(eventId, expensesRegistrationDto);
+    public ResponseEntity<Set<ExpenseModelDto>> addExpense(@PathVariable Long eventId, @RequestBody ExpenseRegistrationDto expenseRegistrationDto) {
+        Set<ExpenseModelDto> expenseModelDto = eventService.addExpense(eventId, expenseRegistrationDto);
 
-        return new ResponseEntity<>(eventModelDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(expenseModelDto, HttpStatus.CREATED);
     }
 }

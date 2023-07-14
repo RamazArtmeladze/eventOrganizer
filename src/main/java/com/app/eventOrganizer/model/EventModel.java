@@ -29,5 +29,5 @@ public class EventModel {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
-    private Set<ExpensesModel> expenses;
+    private Set<ExpenseModel> expenses;
 }

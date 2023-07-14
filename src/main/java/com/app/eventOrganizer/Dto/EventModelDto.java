@@ -4,7 +4,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -19,5 +18,4 @@ public class EventModelDto {
     private String location;
     private String description;
     private BigDecimal estimateBudget;
-    private Set<ExpensesModelDto> expenses;
 }
